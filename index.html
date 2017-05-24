@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<meta charset="utf-8">
+	<title>Tone Analyzer Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		@media only screen and (max-width: 768px) {
+			#wrapper {
+				width : 100%;
+				margin-top : 0px;
+				padding : 2px;
+				background-color : lightgrey;
+				border : 1px solid slategrey;
+				border-radius : 25px;
+				margin : 0px auto;
+				font-weight : bold;
+				text-align : center;
+				-webkit-transition : background-color 2s; 
+				transition : background-color 2s;
+			}
+		}
+		@media only screen and (min-width: 768px) {
+			#wrapper {
+				background-color : lightgrey;
+				border : 2px solid slategrey;
+				border-radius : 25px;
+				width : 50%;
+				padding : 30px;
+				margin : 15px auto;
+				font-weight : bold;
+				margin-top : 120px;
+				text-align : center;
+				-webkit-transition : background-color 2s; 
+				transition : background-color 2s;
+			}
+		}
+		p, span, label {
+			font-weight : normal;
+			font-size: 20px;
+		}
+		body {
+			background-color : aliceblue;
+			font-size : 3em;
+		}
+		h1 {
+			font-size : 1em;
+		}
+		#wrapper {
+			background-color : lightgrey;
+			border : 2px solid slategrey;
+			border-radius : 25px;
+			width : 50%;
+			padding : 30px;
+			margin : 15px auto;
+			font-weight : bold;
+			margin-top : 120px;
+			text-align : center;
+			-webkit-transition : background-color 2s; 
+			transition : background-color 2s;
+		}
+		
+		#button {
+			background-color: #4fabc9;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			font-size: 16px;
+			margin: 15px auto;
+			cursor: pointer;
+			text-align : center;
+		}
+		
+		#submitButton {
+			margin-top: 10px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div>
+		<form action = "http://ec2-35-163-199-81.us-west-2.compute.amazonaws.com:8081/process_post" method = "POST" id = "wrapper">
+		<h1>Tone Analyzer</h1>
+			<p>This application uses IBM Watson's Tone Analyzer to analyze the statement you provide, and then compares the emotional value that Watson attributes to the statement with your value from the slider below.  The closer the difference value is to 0, the closer Watson was to calculating the same emotional level as you.</p>
+			<hr/>
+			<textarea id="textArea" cols="50" rows="10" name="conversation" placeholder="Insert your statement to analyze here." required></textarea>
+			<br/> 
+			<label>Emotion:</label>
+			<select name="userEmotion" required>
+			  <option value="">Select an emotion </option>
+			  <option value="sadness">Sadness</option>
+			  <option value="disgust">Disgust</option>
+			  <option value="anger">Anger</option>
+			  <option value="joy">Joy</option>
+			  <option value="fear">Fear</option>
+			</select>
+			<br/>
+			<label>Emotional Level: </label>
+			<input type="range" name="userEmotionRange" value="50">
+			<br/>
+			<button id="submitButton" type="submit" value = "Submit">Submit</button>
+		</form>	
+	</div>
+</body>
+</html>
